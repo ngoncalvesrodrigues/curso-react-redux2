@@ -2,7 +2,8 @@ import React, { Fragment } from "react";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import { ROUTES } from "./routes";
 import Header from "./components/Header";
-import { Day1 } from "./components/Paises/Paises";
+import { Paises } from "./pages/Paises";
+import { Posts } from "./pages/Posts";
 import "./App.css";
 
 const Welcome = () => <h3>Bienvenido al Curso de React</h3>;
@@ -16,7 +17,8 @@ function App() {
         <Header title="Aplicación React" />
         <Switch>
           <Route exact path={ROUTES.HOME} component={Welcome} />
-          <Route path={ROUTES.DAY1} component={Day1} />
+          <Route exact path={ROUTES.PAISES} component={Paises} />
+          <Route exact path={ROUTES.POSTS} component={Posts} />
           <Route component={NotFoundPage} />
           {/* <Redirect to={ROUTES.HOME} /> */}
         </Switch>

@@ -1,6 +1,7 @@
 export const ROUTES = {
   HOME: "/",
-  DAY1: "/day1",
+  PAISES: "/paises",
+  POSTS: "/posts",
 };
 
 export const LINKS = [
@@ -9,7 +10,11 @@ export const LINKS = [
     url: ROUTES.HOME,
   },
   {
-    texto: "Día 1",
-    url: ROUTES.DAY1,
+    texto: "Paises",
+    url: ROUTES.PAISES,
+  },
+  {
+    texto: "Posts",
+    url: ROUTES.POSTS,
   },
 ];
