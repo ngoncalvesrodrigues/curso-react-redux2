@@ -1,5 +1,5 @@
 import { AnyAction } from "redux";
-import { POST_TYPES } from "../action.types";
+import * as POST_TYPES from "./posts.types";
 import { Post } from "../../models/Post";
 
 const EMPTY_POST = {
@@ -15,6 +15,7 @@ const defaultState = {
   postList: postList,
   selectedPost: EMPTY_POST,
   fetchingPostList: false,
+  fetchingPostDetail: false,
   error: null,
 };
 
@@ -31,14 +32,37 @@ export default (state = defaultState, action: AnyAction) => {
       return {
         ...state,
         fetchingPostList: false,
-        postList: action.payload,
-        selectedPost: action.payload[0],
+        postList: action.payload, // transformacion
+        //selectedPost: action.payload[0],
       };
     case POST_TYPES.FETCH_POST_LIST_REJECTED:
       return {
         ...state,
         fetchingPostList: false,
         error: action.payload.message,
+      };
+    case POST_TYPES.FETCH_POST_PENDING:
+      return {
+        ...state,
+        selectedPost: EMPTY_POST,
+        fetchingPostDetail: true,
+      };
+    case POST_TYPES.FETCH_POST_FULFILLED:
+      return {
+        ...state,
+        fetchingPostDetail: false,
+        selectedPost: action.payload,
+      };
+    case POST_TYPES.FETCH_POST_REJECTED:
+      return {
+        ...state,
+        fetchingPostDetail: false,
+        error: action.payload.message,
+      };
+    case POST_TYPES.SET_SELECTED_POST:
+      return {
+        ...state,
+        selectedPost: action.payload,
       };
     default:
       return state;

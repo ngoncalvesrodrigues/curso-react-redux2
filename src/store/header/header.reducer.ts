@@ -1,5 +1,5 @@
 import { AnyAction } from "redux";
-import { HEADER_TYPES } from "../action.types";
+import HEADER_TYPES from "./header.types";
 //import { DEFAULT_TITLE } from "../../components/Header/Header.constants";
 
 const defaultState = {

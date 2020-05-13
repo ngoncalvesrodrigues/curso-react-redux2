@@ -1,20 +1,38 @@
 import React, { useState, useEffect } from "react";
 import { RouteComponentProps } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import axios from "axios";
 import { FiltroPaises, DetallePais, SelectPaises } from "../components/Paises";
 import { datos } from "../components/Paises/datos";
 import { Pais } from "../models/Pais";
+import { Post } from "../models/Post";
 import { ROUTES } from "../routes";
+import { setTitle } from "../store/header/header.actions";
 
 // interface IPaisesProps {
 //   name?: number | undefined;
 // }
 
-export const Paises = (props: RouteComponentProps) => {
+const Paises = (props: RouteComponentProps) => {
   const [datosApi, setDatosApi] = useState<Pais[]>([]);
   const [filter, setFilter] = useState("");
   const [selectedPais, setSelectedPais] = useState(""); //nombre del pais
 
+  const [listaPost, setListaPost] = useState<Post[]>([]);
+
+  const dispatch = useDispatch();
+
   useEffect(() => {
+    // ejemplo post api y state componente
+    // setFetchingPosts(true)
+    axios
+      .get("https://jsonplaceholder.typicode.com/posts")
+      .then((res) => setListaPost(res.data));
+    //.catch(err => setError(err))
+    //
+    //dispatch({ type: "SET_TITLE", payload: { title: "Paginas" } });
+    dispatch(setTitle("Paises"));
+    //
     console.log("Paises componentDidMount");
     setDatosApi(datos);
     return () => console.log("Paises componentWillUnmount");
@@ -27,6 +45,8 @@ export const Paises = (props: RouteComponentProps) => {
   useEffect(() => {
     console.log("componentDidUpdate");
   });
+
+  console.log("lista post (state componente):", listaPost);
 
   let filteredDatos: Pais[] = datosApi.filter(({ pais }) => {
     const nombrePais = pais.toLowerCase();
@@ -56,6 +76,8 @@ export const Paises = (props: RouteComponentProps) => {
     </div>
   );
 };
+
+export default Paises;
 
 // class Clock extends React.Component {
 //   constructor(props) {
