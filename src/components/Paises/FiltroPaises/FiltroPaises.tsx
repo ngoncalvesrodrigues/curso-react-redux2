@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import { FilterInputText, FiltroPaisesForm } from "./FiltroPaises.styles";
 
 interface IFiltroPaisesProps {
   onFilter: Function;
@@ -22,17 +23,17 @@ export const FiltroPaises = ({ onFilter }: IFiltroPaisesProps) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <FiltroPaisesForm onSubmit={handleSubmit}>
       <label>Filtro</label>
-      <input value={valorFiltro} onChange={handleInputChange} />
+      <FilterInputText value={valorFiltro} onChange={handleInputChange} />
       <div>{valorFiltro}</div>
       <button type="submit">Filtrar</button>
-      <div>
+      <div className="button-go-home">
         <button onClick={() => history.push("/")}>
           Go Home desde componente Filtro
         </button>
       </div>
-    </form>
+    </FiltroPaisesForm>
   );
 };
 

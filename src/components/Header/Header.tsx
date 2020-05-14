@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { headerStyle } from "./Header.style";
 import { LinksHeader } from "./LinksHeader";
+import { HeaderBar } from "./Header.stylesV2";
 
 interface IHeaderProps {
   // title: string;
@@ -16,9 +17,10 @@ export const Header = ({ color = "" }: IHeaderProps) => {
   const lineaTitulo = <div>{`${title} v3`}</div>;
   // const lineaTitulo = <div>{title + " v3"}</div>;
   return (
-    <div style={headerStyle(color)}>
+    // <div style={headerStyle(color)}>
+    <HeaderBar>
       <div>{lineaTitulo}</div>
       <LinksHeader />
-    </div>
+    </HeaderBar>
   );
 };

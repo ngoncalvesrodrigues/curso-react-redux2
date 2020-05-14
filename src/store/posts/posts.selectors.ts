@@ -5,3 +5,5 @@ export const selectorFetchingPostDetail = (state: any) =>
   state.posts.fetchingPostDetail;
 
 export const selectorSelectedPost = (state: any) => state.posts.selectedPost;
+
+export const selectorCreatingPost = (state: any) => state.posts.creating;

@@ -12,6 +12,11 @@ export const fetchPost = (id: string) => ({
   payload: api.getPost(id),
 });
 
+export const createPost = (post: Post) => ({
+  type: POST_TYPES.CREATE_POST,
+  payload: api.createPost(post),
+});
+
 export const setSelectedPost = (postObject: Post) => ({
   type: POST_TYPES.SET_SELECTED_POST,
   payload: postObject,

@@ -4,8 +4,6 @@ import { useDispatch } from "react-redux";
 import { setTitle } from "./store/header/header.actions";
 import { ROUTES } from "./routes";
 import Header from "./components/Header";
-import Notificaciones from "./components/Notificaciones/Notificaciones";
-
 //import Comments from "./pages/Comments";
 //import Paises from "./pages/Paises";
 //import Posts from "./pages/Posts";
@@ -14,7 +12,6 @@ import "./App.css";
 const Comments = lazy(() => import("./pages/Comments"));
 const Paises = lazy(() => import("./pages/Paises"));
 const Posts = lazy(() => import("./pages/Posts"));
-const Posts2 = lazy(() => import("./pages/Posts2"));
 
 const Welcome = () => {
   const dispatch = useDispatch();
@@ -29,23 +26,11 @@ const NotFoundPage = () => <h3>404 La pagina que busca no existe</h3>;
 function App() {
   return (
     <BrowserRouter>
-      <div className="App">
-        <Header />
-        <Notificaciones />
-        {/* <ModalGenerico />
-        <PopUpGenerico /> */}
-        <Suspense fallback={<div>Cargando Paginas Aplicación...</div>}>
-          <Switch>
-            <Route exact path={ROUTES.HOME} component={Welcome} />
-            <Route exact path={ROUTES.PAISES} component={Paises} />
-            <Route exact path={`${ROUTES.COMMENTS}/:id`} component={Comments} />
-            <Route exact path={ROUTES.POSTS} component={Posts} />
-            <Route exact path={ROUTES.POSTS2} component={Posts2} />
-            <Route component={NotFoundPage} />
-            {/* <Redirect to={ROUTES.HOME} /> */}
-          </Switch>
-        </Suspense>
-      </div>
+      <Switch>
+        <Route exact path={ROUTES.HOME} component={Welcome} />
+        <Route exact path={ROUTES.PAISES} component={Paises} />
+        {/* <Redirect to={ROUTES.HOME} /> */}
+      </Switch>
     </BrowserRouter>
   );
 }

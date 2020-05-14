@@ -33,6 +33,20 @@
   margin-left: 0.4rem;
 }
 
+.Error-message {
+  background-color: red;
+  color: white;
+  padding: 0.3rem;
+  cursor: pointer;
+}
+
+.Success-message {
+  background-color: green;
+  color: white;
+  padding: 0.3rem;
+  cursor: pointer;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

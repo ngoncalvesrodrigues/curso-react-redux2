@@ -16,7 +16,8 @@ const defaultState = {
   selectedPost: EMPTY_POST,
   fetchingPostList: false,
   fetchingPostDetail: false,
-  error: null,
+  creating: "",
+  //creating: 'pending' | 'done' | 'error' | ''
 };
 
 export default (state = defaultState, action: AnyAction) => {
@@ -32,14 +33,14 @@ export default (state = defaultState, action: AnyAction) => {
       return {
         ...state,
         fetchingPostList: false,
-        postList: action.payload, // transformacion
+        postList: action.payload.data, // transformacion
+        status: action.payload.status,
         //selectedPost: action.payload[0],
       };
     case POST_TYPES.FETCH_POST_LIST_REJECTED:
       return {
         ...state,
         fetchingPostList: false,
-        error: action.payload.message,
       };
     case POST_TYPES.FETCH_POST_PENDING:
       return {
@@ -57,7 +58,22 @@ export default (state = defaultState, action: AnyAction) => {
       return {
         ...state,
         fetchingPostDetail: false,
-        error: action.payload.message,
+      };
+    case POST_TYPES.CREATE_POST_PENDING:
+      return {
+        ...state,
+        creating: "pending",
+      };
+    case POST_TYPES.CREATE_POST_FULFILLED:
+      return {
+        ...state,
+        creating: "done",
+      };
+    case POST_TYPES.CREATE_POST_REJECTED:
+      return {
+        ...state,
+        creating: "error",
+        error: action.payload.message, //Mensaje generico de error
       };
     case POST_TYPES.SET_SELECTED_POST:
       return {

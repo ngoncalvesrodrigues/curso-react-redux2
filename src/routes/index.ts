@@ -3,6 +3,7 @@ export const ROUTES = {
   COMMENTS: "/comments",
   PAISES: "/paises",
   POSTS: "/posts",
+  POSTS2: "/posts2",
 };
 
 export const LINKS = [
@@ -17,5 +18,9 @@ export const LINKS = [
   {
     texto: "Posts",
     url: ROUTES.POSTS,
+  },
+  {
+    texto: "Posts2",
+    url: ROUTES.POSTS2,
   },
 ];
